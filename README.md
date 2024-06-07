@@ -77,6 +77,11 @@
   quality of the final glyph bitmaps is massively improved.
 
   A glyph slot is a container where individual glyphs can be loaded, whether outline or bitmap format.
+  
+  Pen position refers to the current point in the coordinate system where the next glyph
+  will be drawn when rendering text. It's an analogy taken from traditional typesetting and
+  calligraphy, where a pen or a type piece moves across a surface to place characters.
+  *A type piece is a small physical block with an embossed character if you didnt know.*
 
   Hinting refers to the process of adjusting the shapes of glyphs so that they align with the pixel
   grid of the output device, typically a screen. This adjustment is necessary because font outlines,
@@ -107,11 +112,10 @@
   final renderer to interpret them more or less liberally.
 
   Automatic Hinting is a project that aims at the development of an automatic hinting module
-  that would include both a feature-detection and alignment control pass. Unlike common practice
-  in the industry, we're aiming at real-time performance; we also do not want to rely on
-  font-provided and format-specific hints that may already be present in the font files.
-  This means that we must select algorithms that are both fast and accurate in
-  all phases of development.
+  that would include both a feature-detection and alignment control pass. Its targetted for
+  real-time performance; Its also intended to not rely on font-provided and format-specific
+  hints that may already be present in the font files. This means that it must use algorithms
+  that are both fast and accurate at all phases.
   
   Anti-aliasing is a technique used to smooth the edges of graphical elements, reducing jaggedness
   or aliasing artifacts caused by the discrete nature of digital displays. It works by blending
@@ -139,6 +143,19 @@
 
   Kerning is the process of adjusting the spacing/relative positions between specific pairs of
   characters to improve the overall appearance and readability of text. 
+
+  The bounding box of a glyph is the smallest rectangle that can completely enclose the glyph.
+  It is usually an array of [4] = ...
+  - xMin: The leftmost point of the glyph (lbearing)
+  - xMax: The rightmost point of the glyph (rbearing)
+  - yMin: The bottom point of the glyph
+  - yMax: The top point of the glyph
+
+  Advance metrics define the spacing between glyphs when rendering text. These are primarily concerned w/
+  horizontal text layout:
+  - Advance Width: The horizontal distance from the current pen position to the next pen position.
+  - Left Bearing (lbearing): The distance from the current pen position to the leftmost point of the glyph (xMin)
+  - Right Bearing (rbearing): The distance from the current pen position to the rightmost point of the glyph (xMax)
 
   Scaled Width (swidth) represents the width of a glyph in font design units, which are typically
   defined by the font designer. Font design units are an abstract unit of measurement used internally
