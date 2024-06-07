@@ -38,7 +38,7 @@
   models a given typeface in a given style.*
 
   Monospace fonts possess characters that occupy the same amount of horizontal space,
-  regardless of its shape. Proportional Font characters occupy varying amounts of
+  regardless of its shape. Proportional font characters occupy varying amounts of
   horizontal space based on their shape and size, hence the relative proportion.
 
   The size of text is usually given in points, rather than device-specific pixels.
