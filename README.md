@@ -37,6 +37,17 @@
   A font determines how the text is visually represented. *In FreeType, a face object
   models a given typeface in a given style.*
 
+  The character set is just the set of characters in the font. The encoding is the way that
+  those characters are ordered (or sometimes, the way the first 256 are ordered).
+
+  CID fonts (Character ID) have no encodings. Instead they are designed to be associated
+  with one or several cmap files which provide encodings in a general way. A cmap table
+  translates character codes into corresponding glyph indices. This tells the font rendering
+  engine which glyph to display for each character entered. A single font can have multiple
+  cmap subtables, each supporting a different character encoding scheme (e.g., Unicode,
+  Windows-1252). This allows a single font to work with various character sets used by
+  different operating systems or applications.
+
   Monospace fonts possess characters that occupy the same amount of horizontal space,
   regardless of its shape. Proportional font characters occupy varying amounts of
   horizontal space based on their shape and size, hence the relative proportion.
@@ -61,6 +72,8 @@
   in a pixel format. You'll often see them used in low-resolution displays, fixed-size text,
   or when a particular pixel-perfect appearance is needed. BDF (Bitmap Distribution Format)
 
+  A glyph slot is a container where individual glyphs can be loaded, whether outline or bitmap format.
+  
   Outline fonts are commonly used in scalable font formats. Fonts can also be stored in a
   font file as a series of vectorial shapes called outlines. Each outline is defined as a
   series of points in what is called the master or EM space. Points can be tagged to
@@ -76,12 +89,16 @@
   their important features to the pixel grid in device space. When done correctly, the
   quality of the final glyph bitmaps is massively improved.
 
-  A glyph slot is a container where individual glyphs can be loaded, whether outline or bitmap format.
-  
   Pen position refers to the current point in the coordinate system where the next glyph
   will be drawn when rendering text. It's an analogy taken from traditional typesetting and
   calligraphy, where a pen or a type piece moves across a surface to place characters.
   *A type piece is a small physical block with an embossed character if you didnt know.*
+
+  All glyphs have a width (sometimes called an advance width), this is the distance from the origin
+  of the current glyph to the right edge of the glyph, and this width is also called the right side
+  bearing. The horizontal origin is where the glyph will start being drawn. The horizontal distance
+  between the origin and the leftmost edge of the glyph is called the left side bearing (it may be
+  negative, positive or zero).
 
   Hinting refers to the process of adjusting the shapes of glyphs so that they align with the pixel
   grid of the output device, typically a screen. This adjustment is necessary because font outlines,
