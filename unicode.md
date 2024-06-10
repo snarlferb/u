@@ -65,10 +65,10 @@
   scheme based on the leading byte's first few bits, and how the continuation bytes may follow. 
 ```
   First Byte MSB Pattern	          Number of Continuation Bytes     	Bits Used for Code Point in Leading Byte
-  0xxxxxxx   (all zeros)                       0	                      Single-byte character (ASCII characters)
+  0xxxxxxx   (all zeros)                          0	                   Single-byte character (ASCII characters)
   110xxxxx   (followed by 6 zeros)	           0	                      Single-byte character (reserved for future use)
   110xxxxx   (followed by 1 zero ) 	           1	                      2-byte character
-  1110xxxx   (followed by 2 zeros)	           2                      	3-byte character
+  1110xxxx   (followed by 2 zeros)	           2                    	3-byte character
   11110xxx   (followed by 3 zeros)	           3	                      4-byte character      (less common)
 ```
 *Where it says e.g. "followed by n zeroes", that is denoting those zeroes that follow implicitly for the pattern, as opposed
