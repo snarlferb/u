@@ -71,12 +71,12 @@
   1110xxxx   (followed by 2 zeros)	           2                      	3-byte character
   11110xxx   (followed by 3 zeros)	           3	                      4-byte character      (less common)
 ```
-Where it says e.g. "followed by n zeroes", that is denoting those zeroes that follow implicitly for the pattern, as oppoe
-to something we need to add literally for the pattern.
+*Where it says e.g. "followed by n zeroes", that is denoting those zeroes that follow implicitly for the pattern, as opposed
+to something we need to add literally for the pattern.*
 
     0 _ _ _  _ _ _ _
 
-If we encode one byte, we make the MSB (most significant bit) of whats considered the leading byte, zero, and place the
+As you can see, if we encode one byte than we make the MSB (most significant bit) of whats considered the leading byte, zero, and place the
 code point in the remaining seven bits, e.g. `110 0001` of the following...
 
     0 1 1 0  0 0 0 1
