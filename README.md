@@ -72,6 +72,11 @@
   in a pixel format. You'll often see them used in low-resolution displays, fixed-size text,
   or when a particular pixel-perfect appearance is needed. BDF (Bitmap Distribution Format)
 
+  BDF works on the encoding, not on GIDs (glyph IDs), so default characters are usually encoded.
+  This means that the default character, often a blank space or undefined character, must have\
+  a valid encoding to ensure proper rendering and handling by applications. In some font formats,
+  like TrueType or OpenType, Glyph IDs are used to reference specific glyphs.
+
   A glyph slot is a container where individual glyphs can be loaded, whether outline or bitmap format.
   
   Outline fonts are commonly used in scalable font formats. Fonts can also be stored in a
