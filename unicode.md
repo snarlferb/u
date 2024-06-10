@@ -1,8 +1,9 @@
 ### Unicode
   
   Unicode is a universal character encoding standard that assigns a unique code point to almost every
-  character used in human languages. It encompasses a vast range of characters, including letters,
-  numbers, symbols, punctuation, and special characters from various writing systems around the world.
+  character used in human languages.
+  It encompasses a vast range of characters, including letters, numbers, symbols, punctuation, and
+  special characters from various writing systems around the world.
 
   The challenge lies in representing these Unicode code points as a sequence of bytes that computers can
   understand. Different encoding schemes use varying approaches to achieve this.
@@ -38,7 +39,7 @@
   Modern encodings like UTF-8 and UTF-16 are ways to represent these Unicode code points using a
   sequence of bytes.
 
-  Canonical names or formal designations for character encodings, are often defined by organizations like IANA
+  Canonical names or formal designations for character encodings are often defined by organizations like IANA
   (Internet Assigned Numbers Authority); MIME (Multipurpose Internet Mail Extension) on the other hand is also
   for standardizing names, but specifically in the context of internet communication protocols - as well as
   for referring to character encodings. MIME itself doesn't create its own character encoding, as it acts
@@ -60,16 +61,18 @@
     _ _ _ _  _ _ _ _ (1 byte)
 
   The leading byte has a specific pattern that tells us how many additional
-  continuation bytes follow, and how to extract the code point value from those bytes. Consequently there's a defined scheme
-  based on the leading byte's first few bits, and how the continuation bytes may follow. Where it says e.g. "followed by n zeroes"
-  That is denoting those zeroes that follow implicitly for the pattern, not something we add literally.
-
+  continuation bytes follow, and how to extract the code point value from those bytes. Consequently there's a defined
+  scheme based on the leading byte's first few bits, and how the continuation bytes may follow. 
+```
   First Byte MSB Pattern	          Number of Continuation Bytes     	Bits Used for Code Point in Leading Byte
   0xxxxxxx   (all zeros)                       0	                      Single-byte character (ASCII characters)
   110xxxxx   (followed by 6 zeros)	           0	                      Single-byte character (reserved for future use)
   110xxxxx   (followed by 1 zero ) 	           1	                      2-byte character
   1110xxxx   (followed by 2 zeros)	           2                      	3-byte character
   11110xxx   (followed by 3 zeros)	           3	                      4-byte character      (less common)
+```
+Where it says e.g. "followed by n zeroes", that is denoting those zeroes that follow implicitly for the pattern, as oppoe
+to something we need to add literally for the pattern.
 
     0 _ _ _  _ _ _ _
 
@@ -97,6 +100,7 @@ The second bit of the additional bytes (........ 10xxxxxx 10xxxxxx 10xxxxxx) is 
 code point starts and ends; Even when you start scanning somewhere in the middle of a given text.
 
 The font being used sometimes such as on a webpage may not have a definition for a particular code point, and then cannot interpret it.
+
 As a fallback, the browser shows a small square/rectangle called a missing character box to indicate that something is supposed to
 be there but can't be displayed correctly. This often happens with symbols that aren't used frequently in a particular language
 and might not be included in the default font. Even common fonts might not have every single symbol available.
