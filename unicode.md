@@ -56,7 +56,8 @@
   5, 6 or 7 bits. Crazy eh?... IEC is the International Electrotechnical Commission who have a joint
   technical committee with the ISO.
 
-  A UTF-8 encoding is constructed following a specific pattern (which we will demonstrate in little endian order):
+  A UTF-8 encoding is constructed following a specific pattern *(Im describing the bits within a single UTF-8 byte,
+  and NOT multiple bytes within an address... for this reason UTF-8 and other encodings are independent of endianess):*
 
     _ _ _ _  _ _ _ _ (1 byte)
 
@@ -65,10 +66,10 @@
   scheme based on the leading byte's first few bits, and how the continuation bytes may follow. 
 ```
   First Byte MSB Pattern	          Number of Continuation Bytes     	Bits Used for Code Point in Leading Byte
-  0xxxxxxx   (all zeros)                           0	                  Single-byte character (ASCII characters)
+  0xxxxxxx   (all zeros)                           0	                   Single-byte character (ASCII characters)
   110xxxxx   (followed by 6 zeros)	           0	                      Single-byte character (reserved for future use)
   110xxxxx   (followed by 1 zero ) 	           1	                      2-byte character
-  1110xxxx   (followed by 2 zeros)	           2                 	3-byte character
+  1110xxxx   (followed by 2 zeros)	           2                    	3-byte character
   11110xxx   (followed by 3 zeros)	           3	                      4-byte character      (less common)
 ```
 *Where it says e.g. "followed by n zeroes", that is denoting those zeroes that follow implicitly for the pattern, as opposed
