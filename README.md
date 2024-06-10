@@ -46,7 +46,7 @@
   engine which glyph to display for each character entered. A single font can have multiple
   cmap subtables, each supporting a different character encoding scheme (e.g., Unicode,
   Windows-1252). This allows a single font to work with various character sets used by
-  different operating systems or applications.
+  different operating systems or applications. (see [./unicode.md](unicode.md) to learn more about encodings)
 
   Monospace fonts possess characters that occupy the same amount of horizontal space,
   regardless of its shape. Proportional font characters occupy varying amounts of
