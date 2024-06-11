@@ -56,8 +56,8 @@
   5, 6 or 7 bits. Crazy eh?... IEC is the International Electrotechnical Commission who have a joint
   technical committee with the ISO.
 
-  A UTF-8 encoding is constructed following a specific pattern *(Im describing the bits within a single UTF-8 byte,
-  and NOT multiple bytes within an address... for this reason UTF-8 and other encodings are independent of endianess):*
+  A UTF-8 encoding is constructed following a specific pattern *(Im describing the bits within a single UTF-8 byte **unit**,
+  and NOT multiple bytes within an address... for this reason UTF-8 and other encodings-alike are independent of endianess):*
 
     _ _ _ _  _ _ _ _ (1 byte)
 
