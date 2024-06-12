@@ -37,6 +37,10 @@
   A font determines how the text is visually represented. *In FreeType, a face object
   models a given typeface in a given style.*
 
+  Font properties include things like weight and style. Font weight refers to the thickness of the
+  strokes that make up the letters in a font. Common weights include regular, bold, light, and black.
+  Font style refers to the overall design of the font, such as whether it's italic, slanted, or upright.
+
   The character set is just the set of characters in the font. The encoding is the way that
   those characters are ordered (or sometimes, the way the first 256 are ordered).
 
