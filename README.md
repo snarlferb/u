@@ -1,11 +1,11 @@
 # universal text primer
 
-- A universal place to store information associated w/ text processing: parsing/rendering
-  text as well as user-created fonts (staccato12.bdf, a bitmap distribution font format and
-  consolink.ttf, truetype) BDF fonts are often used in conjunction with other font formats
-  such as PostScript or TrueType. My main reason for using BDF was because of its
-  compatibility w/ X11, as the font format & metrics both align (you can find this
-  out in the X Logical Font Description Conventions) You can also find Adobe's legacy doc/specifications...
+- A universal place to store information associated w/ text processing: parsing, rendering and
+  decoding text as well as user-created fonts that i will be working on (staccato12.bdf for bitmap
+  and consolink.ttf for vector/resizeability) BDF fonts are often used in conjunction w/ formats
+  such as PostScript or TrueType. My main reason for using BDF was because of its compatibility
+  w/ X11, as the font format & metrics both align (you can find this out in the X Logical Font
+  Description Conventions) You can also find Adobe's legacy doc/specifications...
 
   [Adobe Specification](https://adobe-type-tools.github.io/font-tech-notes/)
 
