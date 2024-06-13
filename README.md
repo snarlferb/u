@@ -89,10 +89,54 @@
   indicate that they are actually on the curve, or alternatively, conic or cubic
   bezier control points. In the latter case, they are called off points.
 
-  In order to render a glyph to a given character size, the outline is scaled from the master
-  space to the device space using a simple scaling transform. This scaled outline can then be
-  converted into a monochrome bitmap, or an anti-aliased one. However, such glyphs displayed
-  on a low-resolution surface will often show numerous unpleasant artifacts.
+  A path is a sequence of connected straight line segments and curves that define the outline of a
+  letter or symbol in a font. These paths are created using mathematical functions, and Bezier curves
+  are one of the most common types of functions used. Unlike raster images (made of pixels), Bezier
+  curves are not affected by resolution changes. You can enlarge or shrink a font without losing
+  quality, making them perfect for digital displays. Bezier curves define the smooth curves and
+  lines that make up the outlines in a vector font.
+
+  Vector fonts are rasterized by converting those vector outlines into pixel data, wherein each
+  point is "mapped" to the corresponding pixel on the screen. This involves rendering the outlines onto
+  a pixel grid and filling the interiors of the shapes.
+
+  Bitmap fonts are already rasterized in their current form, however they must still be parsed and decoded.
+
+  Parsing vector and bitmap fonts follows distinct processes tailored to their respective formats.
+  When parsing a vector font such as TrueType or OpenType, the process involves deciphering structured
+  data that defines each glyph using mathematical descriptions like Bézier curves.
+
+  The parser reads through the font file's tables to extract information such as glyph outlines, hinting
+  instructions, kerning pairs, and metadata related to font metrics and features. This parsed data enables
+  the font renderer to scale glyphs smoothly to any size without loss of quality, by dynamically recalculating
+  the curves and lines based on the output device's resolution.
+
+  In contrast, parsing a bitmap font, like those in BDF format, involves interpreting fixed-size grid
+  representations of glyphs and corresponding metrics. The parser identifies and extracts bitmap data for
+  each character, typically stored as sequences of hexadecimal values that encode pixel patterns (the hex
+  and metadata that originated in the BDF file itself)
+
+  When a function reads this data from the file, it converts each hexadecimal value into its corresponding
+  binary representation. This conversion is essential because the application needs to manipulate and process
+  the bitmap data in its memory space.
+
+  Bitmap fonts store each glyph as a grid of pixels, where the number of bits used to represent each
+  pixel (bits per pixel or "bpp") determines the range of colors or shades available. Common depths
+  include 1, 2, 4, 8, 16, and 32 bits per pixel. Higher bpp allows for more detailed or colorful glyphs.
+
+  If the bitmap depth exceeds 8 bits per pixel (e.g., 16 or 32 bits), the function must ensure compatibility
+  with the application's internal representation by discarding the lower-order bits after conversion.
+  This process makes it so that only the significant bits (which represent the actual color or shade information)
+  are used for rendering or other operations.
+
+  Rendering functions can then occur afterwards in order to display the former information, that is, once
+  you have a form of glyphs that can be rendered. At that point you can have functions for mapping
+  characters to a glyph index in the font. Then it can be rendered at the specified potition.
+  Other functions such as `advance_width` may be applicable.
+  
+  The outline is scaled from the world space to the screen space using a simple scaling transform.
+  This scaled outline can then be converted into a monochrome bitmap, or an anti-aliased one.
+  However, such glyphs displayed on a low-resolution surface will often show numerous unpleasant artifacts.
 
   Grid-Fitting is the general process of modifying glyph outlines in order to align some of
   their important features to the pixel grid in device space. When done correctly, the
@@ -110,9 +154,9 @@
   negative, positive or zero).
 
   Hinting refers to the process of adjusting the shapes of glyphs so that they align with the pixel
-  grid of the output device, typically a screen. This adjustment is necessary because font outlines,
-  which are defined in algorithms w/ mathematical curves, may not align perfectly w/ the discrete
-  pixel grid of the output device, leading to suboptimal rendering especially at smaller sizes.
+  grid of the screen. This adjustment is necessary because font outlines, which are defined in
+  algorithms w/ mathematical curves, may not align perfectly w/ the discrete pixel grid of the
+  output device, leading to suboptimal rendering especially at smaller sizes.
 
   Grid-fitting is a process used in font rendering to adjust the outlines of glyphs so that they align
   neatly with the pixel grid. It improves the clarity of text by minimizing visual artifacts such as
