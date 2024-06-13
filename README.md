@@ -95,6 +95,10 @@
   curves are not affected by resolution changes. You can enlarge or shrink a font without losing
   quality, making them perfect for digital displays. Bezier curves define the smooth curves and
   lines that make up the outlines in a vector font.
+
+  Outline fonts use a single stroke to define the shape of the character. The stroke is a continuous
+  path that outlines the entire character. Stroked fonts use a series of strokes to define the shape
+  of the character. The strokes are individual lines that are combined to form the character.
   
   Pen position refers to the current point in the coordinate system where the next glyph will be drawn
   when rendering text. It's an analogy taken from traditional typesetting and calligraphy, where a pen
@@ -193,10 +197,9 @@
   monochrome bitmap. Generally, many people argue that rendering anti-aliased scaled outlines
   is sufficient and that no additional grid-fitting is needed.
 
-  However, experience proves that grid-fitting anti-aliased glyphs helps a lot by enhancing the
+  However, experience proves that grid-fitting anti-aliased glyphs help a lot by enhancing the
   contrast of certain glyph features, mainly edges, in order to make them more readable.
-  Indeed, most users consider than non-hinted, anti-aliased outlines are fuzzy and painful to read.
-  Because anti-aliased outlines carry more detail, they need less adjustment to improve their quality.
+  Most users have considered that non-hinted, anti-aliased outlines are fuzzy and painful to read.
 
   Subpixel Positioning refers to the ability to position graphical elements, such as text or images,
   at fractional pixel positions. By allowing elements to be placed between whole pixels, subpixel
