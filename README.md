@@ -95,6 +95,11 @@
   curves are not affected by resolution changes. You can enlarge or shrink a font without losing
   quality, making them perfect for digital displays. Bezier curves define the smooth curves and
   lines that make up the outlines in a vector font.
+  
+  Pen position refers to the current point in the coordinate system where the next glyph will be drawn
+  when rendering text. It's an analogy taken from traditional typesetting and calligraphy, where a pen
+  or a type piece moves across a surface to place characters. *A type piece is a small physical block
+  with an embossed character if you didnt know.*
 
   Vector fonts are rasterized by converting those vector outlines into pixel data, wherein each
   point is "mapped" to the corresponding pixel on the screen. This involves rendering the outlines onto
@@ -134,33 +139,23 @@
   characters to a glyph index in the font. Then it can be rendered at the specified potition.
   Other functions such as `advance_width` may be applicable.
   
-  The outline is scaled from the world space to the screen space using a simple scaling transform.
-  This scaled outline can then be converted into a monochrome bitmap, or an anti-aliased one.
-  However, such glyphs displayed on a low-resolution surface will often show numerous unpleasant artifacts.
+  The outline is scaled from the world space (sometimes known as coordinate or master space) to the screen
+  space using a simple scaling transform. This scaled outline can then be converted into a monochrome bitmap,
+  or an anti-aliased one. However, such glyphs displayed on a low-resolution surface will often show numerous
+  unpleasant artifacts. The following techniques address those challenges...
 
-  Grid-Fitting is the general process of modifying glyph outlines in order to align some of
-  their important features to the pixel grid in device space. When done correctly, the
-  quality of the final glyph bitmaps is massively improved.
+  Hinting refers to the process of adjusting the shapes of glyphs so that they align with the pixel grid of the
+  screen. This adjustment is necessary because font outlines, which are defined in algorithms w/ mathematical
+  curves, may not align perfectly w/ the discrete pixel grid of the output device, leading to suboptimal
+  rendering especially at smaller sizes.
 
-  Pen position refers to the current point in the coordinate system where the next glyph
-  will be drawn when rendering text. It's an analogy taken from traditional typesetting and
-  calligraphy, where a pen or a type piece moves across a surface to place characters.
-  *A type piece is a small physical block with an embossed character if you didnt know.*
+  Grid-Fitting is the general process of modifying glyph outlines in order to align some of their important
+  features to the pixel grid in screen space. When done correctly, the quality of the final glyph bitmaps is
+  massively improved.
 
-  All glyphs have a width (sometimes called an advance width), this is the distance from the origin
-  of the current glyph to the right edge of the glyph, and this width is also called the right side
-  bearing. The horizontal origin is where the glyph will start being drawn. The horizontal distance
-  between the origin and the leftmost edge of the glyph is called the left side bearing (it may be
-  negative, positive or zero).
-
-  Hinting refers to the process of adjusting the shapes of glyphs so that they align with the pixel
-  grid of the screen. This adjustment is necessary because font outlines, which are defined in
-  algorithms w/ mathematical curves, may not align perfectly w/ the discrete pixel grid of the
-  output device, leading to suboptimal rendering especially at smaller sizes.
-
-  Grid-fitting is a process used in font rendering to adjust the outlines of glyphs so that they align
-  neatly with the pixel grid. It improves the clarity of text by minimizing visual artifacts such as
-  jagged edges or blurriness. It can be decomposed in two important phases...
+  Grid-fitting thus improves the clarity of text by minimizing visual artifacts such as jagged edges or
+  blurriness. It can be decomposed in two important phases...
+  
   (1) Feature Detection: This pass is in charge of detecting important glyph and font
   features and produce control data ("hints") which describe them to the final renderer.
 
@@ -213,6 +208,11 @@
 
   Kerning is the process of adjusting the spacing/relative positions between specific pairs of
   characters to improve the overall appearance and readability of text. 
+  
+  All glyphs have a width (sometimes called an advance width), this is the distance from the origin of the
+  current glyph to the right edge of the glyph, and this width is also called the right side bearing.
+  The horizontal origin is where the glyph will start being drawn. The horizontal distance between the
+  origin and the leftmost edge of the glyph is called the left side bearing (it may be negative, positive or zero).
 
   The bounding box of a glyph is the smallest rectangle that can completely enclose the glyph.
   It is usually an array of [4] = ...
