@@ -101,9 +101,10 @@
   or a type piece moves across a surface to place characters. *A type piece is a small physical block
   with an embossed character if you didnt know.*
 
-  Vector fonts are rasterized by converting those vector outlines into pixel data, wherein each
-  point is "mapped" to the corresponding pixel on the screen. This involves rendering the outlines onto
-  a pixel grid and filling the interiors of the shapes.
+  The scanline/rasterization process involves determining which pixels within a grid are covered by the
+  outline of a glyph. Vector fonts are rasterized by converting those vector outlines (lines, shapes, etc.)
+  into pixel data, wherein each point is mapped to the corresponding pixel on the screen; which involves
+  transfering the bespoke outlines onto a pixel grid and filling the interiors of said shapes.
 
   Bitmap fonts are already rasterized in their current form, however they must still be parsed and decoded.
 
