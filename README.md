@@ -7,9 +7,9 @@
   w/ X11, as the font format & metrics both align (you can find this out in the X Logical Font
   Description Conventions) You can also find Adobe's legacy doc/specifications...
 
-  [Adobe Specification](https://adobe-type-tools.github.io/font-tech-notes/)
+  [Adobe Specification](https://adobe-type-tools.github.io/font-tech-notes)
 
-  [X11 Specification](https://tronche.com/gui/x/xlib/graphics/font-metrics/)
+  [X11 Specification](https://tronche.com/gui/x/xlib/graphics/font-metrics)
 
   The following document presents the core conventions used within the FreeType library
   to manage font and glyph data.
@@ -29,9 +29,17 @@
 
   [API Reference](https://freetype.org/freetype2/docs/reference/index.html)
 
+  Aside from reading the following, quite possibly the best way to learn is to look at the
+  source code or read the documentation of FontForge. If you ever were trying to learn all
+  about digital images and font, FontForge is quite possibly the most comprehensive tool,
+  and i really enjoy using the outline/spiro, and bitmap view to draw/edit w/. They did
+  a good job making it feel smooth and intuitive.
+
+  [FontForge Docs](https://fontforge.org/en-US/documentation)
+
   We'll begin by going over some generic facts. Text is the actual content or string of
-  characters that conveys information. It consists of letters, numbers, symbols, and whitespace
-  that together form words, sentences, and paragraphs.
+  characters that conveys information. It consists of letters, numbers, symbols, and
+  whitespace that together form words, sentences, and paragraphs.
 
   A font is a specific style and size of a typeface, which is a design set of characters.
   A font determines how the text is visually represented. *In FreeType, a face object
