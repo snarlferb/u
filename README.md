@@ -105,21 +105,22 @@
   or a type piece moves across a surface to place characters. *A type piece is a small physical block
   with an embossed character if you didnt know.*
 
-  The scanline/rasterization process involves determining which pixels within a grid are covered by the
-  outline of a glyph. Vector fonts are rasterized by converting those vector outlines (lines, shapes, etc.)
-  into pixel data, wherein each point is mapped to the corresponding pixel on the screen; which involves
-  transfering the bespoke outlines onto a pixel grid and filling the interiors of said shapes.
-
-  Bitmap fonts are already rasterized in their current form, however they must still be parsed and decoded.
-
   Parsing vector and bitmap fonts follows distinct processes tailored to their respective formats.
   When parsing a vector font such as TrueType or OpenType, the process involves deciphering structured
   data that defines each glyph using mathematical descriptions like Bézier curves.
 
-  The parser reads through the font file's tables to extract information such as glyph outlines, hinting
-  instructions, kerning pairs, and metadata related to font metrics and features. This parsed data enables
-  the font renderer to scale glyphs smoothly to any size without loss of quality, by dynamically recalculating
-  the curves and lines based on the output device's resolution.
+  During the loading process, the parser reads through the font file's tables to extract information such as
+  glyph outlines, hinting instructions, kerning pairs, and metadata related to font metrics and features.
+  This parsed data enables the font renderer to scale glyphs smoothly to any size without loss of quality,
+  by dynamically recalculating the curves and lines based on the output device's resolution.
+
+  The scanline (separate but important process on the whole)/and rasterization involves determining which
+  pixels within a grid are covered by the outline of a glyph. Vector fonts are rasterized by converting those
+  vector outlines (lines, shapes, etc.) into pixel data, wherein each point is mapped to the corresponding
+  pixel on the screen; which involves transfering the bespoke outlines onto a pixel grid and filling the
+  interiors of said shapes.
+
+  Bitmap fonts are already rasterized in their current form, however they must still be parsed and decoded.
 
   In contrast, parsing a bitmap font, like those in BDF format, involves interpreting fixed-size grid
   representations of glyphs and corresponding metrics. The parser identifies and extracts bitmap data for
@@ -139,10 +140,14 @@
   This process makes it so that only the significant bits (which represent the actual color or shade information)
   are used for rendering or other operations.
 
-  Rendering functions can then occur afterwards in order to display the former information, that is, once
-  you have a form of glyphs that can be rendered. At that point you can have functions for mapping
-  characters to a glyph index in the font. Then it can be rendered at the specified potition.
-  Other functions such as `advance_width` may be applicable.
+  After conversion, the binary bitmap data for each glyph is stored in a data structure in memory.
+  This structure typically includes metadata such as glyph metrics (width, height, bearing, advance)
+  alongside the binary bitmap data. 
+
+  After the font data is processed, rendering functions are used to display. These functions map characters
+  to their corresponding glyph indices in the font. Once mapped, glyphs can be rendered at specific positions
+  within a text layout. Functions like `advance_width` are often used to determine the spacing between glyphs
+  for proper alignment.
   
   The outline is scaled from the world space (sometimes known as coordinate or master space) to the screen
   space using a simple scaling transform. This scaled outline can then be converted into a monochrome bitmap,
@@ -181,6 +186,20 @@
   On the other hand, the Type 1 format uses much simpler and shorter hints, which forces the
   final renderer to interpret them more or less liberally.
 
+  GASP (Grid-fitting And Scan-conversion Procedure) is part of the TrueType font format spec and
+  is used to control the grid-fitting and anti-aliasing behavior of glyphs when rendered at
+  different pixel sizes. It specifies whether anti-aliasing should be enabled or disabled for
+  specific font sizes, ensuring optimal rendering quality across various resolutions and display
+  devices. For example, it can define different rendering behaviors for small text sizes by
+  disabling anti-aliasing to maintain sharpness, versus larger sizes by enabling
+  anti-aliasing for smoother edges.
+
+  Auto-fitting generally refers to the broader concept of adjusting font glyphs or text elements
+  to fit within specified constraints or to optimize their appearance. This can include tasks
+  such as adjusting spacing, scaling glyphs, or aligning them to a grid. While auto-fitting can
+  encompass automatic hinting as one aspect (especially in the context of FreeType and similar
+  libraries), it also includes other adjustments that optimize how text is displayed or processed.
+
   Automatic Hinting is a project that aims at the development of an automatic hinting module
   that would include both a feature-detection and alignment control pass. Its targetted for
   real-time performance; Its also intended to not rely on font-provided and format-specific
@@ -190,7 +209,7 @@
   Anti-aliasing is a technique used to smooth the edges of graphical elements, reducing jaggedness
   or aliasing artifacts caused by the discrete nature of digital displays. It works by blending
   colors along the edges of objects to create a smoother transition between foreground and background
-  colors, resulting in a more visually pleasing appearance.
+  colors, resulting in a more visually pleasing appearance (especially for low-res)
   
   A good anti-aliasing scan-converter generates a gray-level image that computes the exact outline
   coverage on each pixel, or an approximation of it. These images have much more detail than a
