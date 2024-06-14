@@ -59,11 +59,16 @@
   The size of text is usually given in points, rather than device-specific pixels.
   Points provide a standard unit for designers to specify the relative size they want for the text,
   independent of the device's pixel density. The resolution (dpi) tells us the pixel density
-  of the device. It captures how many pixels are crammed into an inch on that specific screen.
+  of the device. Pixel density tells us how many pixels are crammed into an inch on that
+  specific screen.
 
   By multiplying the point size by the resolution and dividing it by 72, we convert the
   desired relative size (points) into the pixel density needed to achieve a similar visual
   size on that particular device with its specific pixel density (dpi).
+
+  So (dpi) or dots per inch, refers to the resolution of a printed image, indicating the number
+  of ink dots within a single inch; (ppi) or pixels per inch refers to the resolution of a
+  digital image, and indicates how many pixels are packed into a single inch of the image.
 
   A bitmap format represents a glyph (visual image/character) as a grid of pixels, where
   each pixel has a specific color value (usually black-and-white or grayscale). It consists
@@ -131,13 +136,29 @@
   the bitmap data in its memory space.
 
   Bitmap fonts store each glyph as a grid of pixels, where the number of bits used to represent each
-  pixel (bits per pixel or "bpp") determines the range of colors or shades available. Common depths
-  include 1, 2, 4, 8, 16, and 32 bits per pixel. Higher bpp allows for more detailed or colorful glyphs.
+  pixel (bits per pixel or "bpp") determines the range of colors or shades available, that is number of bits
+  used to represent the color information of each pixel in a font character. Common depths include
+  1, 2, 4, 8, 16, and 32 bits per pixel. Higher bpp allows for more detailed or colorful glyphs.
 
   If the bitmap depth exceeds 8 bits per pixel (e.g., 16 or 32 bits), the function must ensure compatibility
   with the application's internal representation by discarding the lower-order bits after conversion.
-  This process makes it so that only the significant bits (which represent the actual color or shade information)
-  are used for rendering or other operations.
+  This process makes it so that only the significant bits (which represent the actual color or shade
+  information) are used for rendering or other operations. Note, that bitmap font depth and display
+  depth are two totally different things.
+
+  RGB Packing (separate step) is a technique that uses allocated bits, and thus assumes a specific bpp
+  allocation (likely 24-bit for RGB) and packs the individual red, green, and blue values (typically within
+  the range of 0 to 255) into a single integer using bit shifting, typically. It ensures each color component
+  occupies its designated bits within the total bpp. Therefore, by combining the individual red, green, and
+  blue (RGB) components of a color into a single integer value for efficient storage and manipulation we
+  can reduce the overall memory footprint and improve processing of said color data.
+
+  So we know that bpp determines available color data; The number of bits per pixel dictates how many bits are
+  allocated to represent each color channel (red, green, blue) within a pixel. For instance, with 8 bpp (8 bits
+  per pixel), you might have 3 bits for each color channel, limiting the possible color combinations.
+
+  *"Bit blitting" might be worth mentioning; im just unsure how in-depth we should go. Again,
+  its another related but separate step.*
 
   After conversion, the binary bitmap data for each glyph is stored in a data structure in memory.
   This structure typically includes metadata such as glyph metrics (width, height, bearing, advance)
