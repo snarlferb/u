@@ -29,9 +29,15 @@
 
   [API Reference](https://freetype.org/freetype2/docs/reference/index.html)
 
-  Lets go over some generic facts. Text is the actual content or string of characters that
-  conveys information. It consists of letters, numbers, symbols, and whitespace that
-  together form words, sentences, and paragraphs.
+  Note: I may not include all of the language used in typography, as there may be terms
+  that ive failed to acknowledge or define. I'm more so focused on digital representations
+  of text and only summoning typography to the theatre only when absolutely necessary,
+  thereby not muddying up the flow of reading; as it could have resulted in the over-
+  use of uncommon words that'd require further research or explanation.
+
+  We'll begin by going over some generic facts. Text is the actual content or string of
+  characters that conveys information. It consists of letters, numbers, symbols, and whitespace
+  that together form words, sentences, and paragraphs.
 
   A font is a specific style and size of a typeface, which is a design set of characters.
   A font determines how the text is visually represented. *In FreeType, a face object
@@ -44,23 +50,22 @@
   The character set is just the set of characters in the font. The encoding is the way that
   those characters are ordered (or sometimes, the way the first 256 are ordered).
 
-  CID fonts (Character ID) have no encodings. Instead they are designed to be associated
-  with one or several cmap files which provide encodings in a general way. A cmap table
-  translates character codes into corresponding glyph indices. This tells the font rendering
-  engine which glyph to display for each character entered. A single font can have multiple
-  cmap subtables, each supporting a different character encoding scheme (e.g., Unicode,
-  Windows-1252). This allows a single font to work with various character sets used by
-  different operating systems or applications. (see [./unicode.md](unicode.md) to learn more about encodings)
+  CID fonts (Character ID) have no encodings. Instead they are designed to be associated with one
+  or several cmap files which provide encodings in a general way. A cmap table translates character
+  codes into corresponding glyph indices. This tells the font rendering engine which glyph to display
+  for each character entered. A single font can have multiple cmap subtables, each supporting a
+  different character encoding scheme (e.g., Unicode, Windows-1252). This allows a single font
+  to work with various character sets used by different operating systems or applications.
+  (see [./unicode.md](unicode.md) to learn more about encodings)
 
-  Monospace fonts possess characters that occupy the same amount of horizontal space,
-  regardless of its shape. Proportional font characters occupy varying amounts of
-  horizontal space based on their shape and size, hence the relative proportion.
+  Monospace fonts possess characters that occupy the same amount of horizontal space, regardless
+  of its shape. Proportional font characters occupy varying amounts of horizontal space based on
+  their shape and size, hence the relative proportion.
 
   The size of text is usually given in points, rather than device-specific pixels.
-  Points provide a standard unit for designers to specify the relative size they want
-  for the text, independent of the device's pixel density. The resolution (dpi) tells us
-  the pixel density of the device. It captures how many pixels are crammed into an inch
-  on that specific screen.
+  Points provide a standard unit for designers to specify the relative size they want for the text,
+  independent of the device's pixel density. The resolution (dpi) tells us the pixel density
+  of the device. It captures how many pixels are crammed into an inch on that specific screen.
 
   By multiplying the point size by the resolution and dividing it by 72, we convert the
   desired relative size (points) into the pixel density needed to achieve a similar visual
@@ -77,17 +82,17 @@
   or when a particular pixel-perfect appearance is needed. BDF (Bitmap Distribution Format)
 
   BDF works on the encoding, not on GIDs (glyph IDs), so default characters are usually encoded.
-  This means that the default character, often a blank space or undefined character, must have\
+  This means that the default character, often a blank space or undefined character, must have
   a valid encoding to ensure proper rendering and handling by applications. In some font formats,
   like TrueType or OpenType, Glyph IDs are used to reference specific glyphs.
 
   A glyph slot is a container where individual glyphs can be loaded, whether outline or bitmap format.
   
-  Outline fonts are commonly used in scalable font formats. Fonts can also be stored in a
-  font file as a series of vectorial shapes called outlines. Each outline is defined as a
-  series of points in what is called the master or EM space. Points can be tagged to
-  indicate that they are actually on the curve, or alternatively, conic or cubic
-  bezier control points. In the latter case, they are called off points.
+  Outline fonts are commonly used in scalable font formats. Fonts can also be stored in a font file
+  as a series of vectorial shapes called outlines. Each outline is defined as a series of points in
+  what is called the master or EM space. Points can be tagged to indicate that they are actually on
+  the curve, or alternatively, conic or cubic bezier control points. In the latter case, they are
+  called off points.
 
   A path is a sequence of connected straight line segments and curves that define the outline of a
   letter or symbol in a font. These paths are created using mathematical functions, and Bezier curves
