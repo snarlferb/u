@@ -30,12 +30,10 @@
   [API Reference](https://freetype.org/freetype2/docs/reference/index.html)
 
   Aside from reading the following, quite possibly the best way to learn is to look at the
-  source code or read the documentation of FontForge. If you ever were trying to learn all
+  source code or read the documentation of [FontForge](https://fontforge.org/en-US/documentation). If you ever were trying to learn all
   about digital images and font, FontForge is quite possibly the most comprehensive tool,
   and i really enjoy using the outline/spiro, and bitmap view to draw/edit w/. They did
-  a good job making it feel smooth and intuitive.
-
-  [FontForge Docs](https://fontforge.org/en-US/documentation)
+  a good job making it feel smooth and intuitive. 
 
   We'll begin by going over some generic facts. Text is the actual content or string of
   characters that conveys information. It consists of letters, numbers, symbols, and
