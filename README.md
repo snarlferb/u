@@ -29,12 +29,6 @@
 
   [API Reference](https://freetype.org/freetype2/docs/reference/index.html)
 
-  Note: I may not include all of the language used in typography, as there may be terms
-  that ive failed to acknowledge or define. I'm more so focused on digital representations
-  of text and only summoning typography to the theatre when it absolutely necessary,
-  thereby not muddying up the flow of reading; As it could have resulted in the over-
-  use of uncommon words that'd require further research or explanation.
-
   We'll begin by going over some generic facts. Text is the actual content or string of
   characters that conveys information. It consists of letters, numbers, symbols, and whitespace
   that together form words, sentences, and paragraphs.
