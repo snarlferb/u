@@ -50,8 +50,8 @@
   The character set is just the set of characters in the font. The encoding is the way that
   those characters are ordered (or sometimes, the way the first 256 are ordered).
 
-  CID fonts (Character ID) rely on x&#x5F;amount of cmap files, that which define encodings in a
-  more general way. A cmap table translates character codes into corresponding glyph indices.`
+  CID fonts (Character ID) rely on Xamount of cmap files, that which define encodings in a
+  more general way. A cmap table translates character codes into corresponding glyph indices.
   This tells the font rendering engine which glyph to display for each character entered.
   A single font can have multiple cmap subtables, each supporting a different character encoding
   scheme (e.g., Unicode, Windows-1252). This allows a single font to work with various character
