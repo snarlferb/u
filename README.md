@@ -50,27 +50,27 @@
   The character set is just the set of characters in the font. The encoding is the way that
   those characters are ordered (or sometimes, the way the first 256 are ordered).
 
-  CID fonts (Character ID) have no encodings. Instead they are designed to be associated with one
-  or several cmap files which provide encodings in a general way. A cmap table translates character
-  codes into corresponding glyph indices. This tells the font rendering engine which glyph to display
-  for each character entered. A single font can have multiple cmap subtables, each supporting a
-  different character encoding scheme (e.g., Unicode, Windows-1252). This allows a single font
-  to work with various character sets used by different operating systems or applications.
+  CID fonts (Character ID) rely on x&#x5F;amount of cmap files, that which define encodings in a
+  more general way. A cmap table translates character codes into corresponding glyph indices.`
+  This tells the font rendering engine which glyph to display for each character entered.
+  A single font can have multiple cmap subtables, each supporting a different character encoding
+  scheme (e.g., Unicode, Windows-1252). This allows a single font to work with various character
+  sets used by different operating systems or applications.
   (see [./unicode.md](unicode.md) to learn more about encodings)
 
   Monospace fonts possess characters that occupy the same amount of horizontal space, regardless
   of its shape. Proportional font characters occupy varying amounts of horizontal space based on
-  their shape and size, hence the relative proportion.
+  their shape and size, hence relative *proportion*.
 
   The size of text is usually given in points, rather than device-specific pixels.
   Points provide a standard unit for designers to specify the relative size they want for the text,
   independent of the device's pixel density. The resolution (dpi) tells us the pixel density
-  of the device. Pixel density tells us how many pixels are crammed into an inch on that
-  specific screen.
+  of the device. Pixel density says how many pixels are crammed into an inch in that space,
+  on that specific screen.
 
   By multiplying the point size by the resolution and dividing it by 72, we convert the
   desired relative size (points) into the pixel density needed to achieve a similar visual
-  size on that particular device with its specific pixel density (dpi).
+  size on that particular device/screen with its specific pixel density (dpi).
 
   So (dpi) or dots per inch, refers to the resolution of a printed image, indicating the number
   of ink dots within a single inch; (ppi) or pixels per inch refers to the resolution of a
@@ -94,10 +94,11 @@
   A glyph slot is a container where individual glyphs can be loaded, whether outline or bitmap format.
   
   Outline fonts are commonly used in scalable font formats. Fonts can also be stored in a font file
-  as a series of vectorial shapes called outlines. Each outline is defined as a series of points in
-  what is called the master or EM space. Points can be tagged to indicate that they are actually on
-  the curve, or alternatively, conic or cubic bezier control points. In the latter case, they are
-  called off points.
+  as a series of vector shapes called outlines. Each outline is defined as a coordinate system (series
+  of points) in what is called the master or EM space. Points can be tagged to indicate that they are
+  actually *on the curve*, or alternatively, conic or cubic bezier control points. In the latter case,
+  they are called off-curve points; Therefore, on-curve points lie directly on the outline of the
+  glyph and are used to define the main shape of the character.
 
   A path is a sequence of connected straight line segments and curves that define the outline of a
   letter or symbol in a font. These paths are created using mathematical functions, and Bezier curves
@@ -113,38 +114,38 @@
   Pen position refers to the current point in the coordinate system where the next glyph will be drawn
   when rendering text. It's an analogy taken from traditional typesetting and calligraphy, where a pen
   or a type piece moves across a surface to place characters. *A type piece is a small physical block
-  with an embossed character if you didnt know.*
+  with an embossed character, which is irrelevant, unless you're starting a printing press*
 
-  Parsing vector and bitmap fonts follows distinct processes tailored to their respective formats.
+  Parsing vector and bitmap fonts follows a distinct process specific to the associated format used.
   When parsing a vector font such as TrueType or OpenType, the process involves deciphering structured
-  data that defines each glyph using mathematical descriptions like Bézier curves.
+  data that defines each glyph using mathematical descriptions (Bézier curves).
 
   During the loading process, the parser reads through the font file's tables to extract information such as
   glyph outlines, hinting instructions, kerning pairs, and metadata related to font metrics and features.
   This parsed data enables the font renderer to scale glyphs smoothly to any size without loss of quality,
   by dynamically recalculating the curves and lines based on the output device's resolution.
 
-  The scanline (separate but important process on the whole)/and rasterization involves determining which
-  pixels within a grid are covered by the outline of a glyph. Vector fonts are rasterized by converting those
-  vector outlines (lines, shapes, etc.) into pixel data, wherein each point is mapped to the corresponding
-  pixel on the screen; which involves transfering the bespoke outlines onto a pixel grid and filling the
-  interiors of said shapes.
+  The scanline (separate but important process on the whole) and rasterization are such steps required for
+  having some semblance of text processing in your application. Rasterization determines which pixels within
+  a grid are covered by the outline of a glyph. Vector fonts are rasterized by converting those vector outlines
+  (lines, shapes, etc.) into pixel data, wherein each point is mapped to the corresponding pixel on the screen.
+  This involves transfering the bespoke outlines onto a pixel grid and filling the interiors of said shapes.
 
   Bitmap fonts are already rasterized in their current form, however they must still be parsed and decoded.
 
-  In contrast, parsing a bitmap font, like those in BDF format, involves interpreting fixed-size grid
+  In contrast, parsing a bitmap font (like those in BDF format) involves interpreting fixed-size grid
   representations of glyphs and corresponding metrics. The parser identifies and extracts bitmap data for
   each character, typically stored as sequences of hexadecimal values that encode pixel patterns (the hex
-  and metadata that originated in the BDF file itself)
+  and metadata that originated in the font file itself)
 
   When a function reads this data from the file, it converts each hexadecimal value into its corresponding
   binary representation. This conversion is essential because the application needs to manipulate and process
   the bitmap data in its memory space.
 
-  Bitmap fonts store each glyph as a grid of pixels, where the number of bits used to represent each
-  pixel (bits per pixel or "bpp") determines the range of colors or shades available, that is number of bits
-  used to represent the color information of each pixel in a font character. Common depths include
-  1, 2, 4, 8, 16, and 32 bits per pixel. Higher bpp allows for more detailed or colorful glyphs.
+  Bitmap fonts store each glyph as a grid of pixels, where the number of bits used to represent each pixel
+  (bits per pixel or "bpp") determines the range of colors or shades available, that is number of bits used
+  to represent the color information of each pixel in a font character. Common depths include 1, 2, 4, 8, 16,
+  and 32 bits per pixel. Higher bpp allows for more detailed or colorful glyphs.
 
   If the bitmap depth exceeds 8 bits per pixel (e.g., 16 or 32 bits), the function must ensure compatibility
   with the application's internal representation by discarding the lower-order bits after conversion.
@@ -163,8 +164,8 @@
   allocated to represent each color channel (red, green, blue) within a pixel. For instance, with 8 bpp (8 bits
   per pixel), you might have 3 bits for each color channel, limiting the possible color combinations.
 
-  *"Bit blitting" might be worth mentioning; im just unsure how in-depth we should go. Again,
-  its another related but separate step.*
+  *Ive gone this far into the actual application details, im wondering if i should mention bit blitting as well*
+  Its definitely related, if you intend to look it up yourself, so go ahead.
 
   After conversion, the binary bitmap data for each glyph is stored in a data structure in memory.
   This structure typically includes metadata such as glyph metrics (width, height, bearing, advance)
