@@ -131,7 +131,8 @@
   (lines, shapes, etc.) into pixel data, wherein each point is mapped to the corresponding pixel on the screen.
   This involves transfering the bespoke outlines onto a pixel grid and filling the interiors of said shapes.
 
-  Bitmap fonts are already rasterized in their current form, however they must still be parsed and decoded.
+  Bitmap fonts are already rasterized in their current form, however they must still be parsed (and decoded
+  into a useable form, specifically for FreeType's rendering pipeline)
 
   In contrast, parsing a bitmap font (like those in BDF format) involves interpreting fixed-size grid
   representations of glyphs and corresponding metrics. The parser identifies and extracts bitmap data for
