@@ -11,6 +11,17 @@
 
   [X11 Specification](https://tronche.com/gui/x/xlib/graphics/font-metrics)
 
+  I often go to all different websites to learn about a related filetype's format and structure,
+  however you can visit apple's developer site to learn more about TrueType.
+
+  [TrueType Reference](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6.html)
+
+  You can find an overview of OpenType here (I realize that this might appear like an exorbitant
+  amount of information at first glance, however i just want it to be out there and accessible to
+  eviry 1... i like elviry... and ezmerelda, and agetha... ,.. ant jemima)
+
+  [OpenType Overview](https://learn.microsoft.com/en-us/typography/opentype)
+
   The following document presents the core conventions used within the FreeType library
   to manage font and glyph data.
 
@@ -30,10 +41,10 @@
   [API Reference](https://freetype.org/freetype2/docs/reference/index.html)
 
   Aside from reading the following, quite possibly the best way to learn is to look at the
-  source code or read the documentation of [FontForge](https://fontforge.org/en-US/documentation). If you ever were trying to learn all
-  about digital images and font, FontForge is quite possibly the most comprehensive tool,
-  and i really enjoy using the outline/spiro, and bitmap view to draw/edit w/. They did
-  a good job making it feel smooth and intuitive. 
+  source code or read the documentation of [FontForge](https://fontforge.org/en-US/documentation).
+  If you ever were trying to learn all about digital images and font, FontForge is quite
+  possibly the most comprehensive tool, and i really enjoy using the outline/spiro, and
+  bitmap view to draw/edit w/. They did a good job making it feel smooth and intuitive. 
 
   We'll begin by going over some generic facts. Text is the actual content or string of
   characters that conveys information. It consists of letters, numbers, symbols, and
