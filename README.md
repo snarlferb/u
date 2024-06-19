@@ -265,21 +265,22 @@
 
   Grid-Pixel Placement (26.6 Fixed-Point Format) refers to the "placement of a pixel on a grid" w/
   fractional accuracy. Its used to determine the exact coordinates of where the glyph should be
-  placed to achieve precise rendering. So to reiterate, 26.6 pertains to the fixed-point represent-
-  ation for positioning, while  2^64 indicates the level of granularity within each of those positions. 
+  placed to achieve precise rendering. So to reiterate, 26.6 pertains to the fixed-point representation
+  for pixel positioning (2^64 indicates the level of granularity within each of those positions)
 
   Kerning is the process of adjusting the spacing/relative positions between specific pairs of
   characters to improve the overall appearance and readability of text. 
   
   All glyphs have a width (sometimes called an advance width), this is the distance from the origin of the
   current glyph to the right edge of the glyph, and this width is also called the right side bearing.
-  The horizontal origin is where the glyph will start being drawn. The horizontal distance between the
-  origin and the leftmost edge of the glyph is called the left side bearing (it may be negative, positive or zero).
+  The horizontal distance between the origin and the leftmost edge of the glyph is called the left
+  side bearing (it may be negative, positive or zero), the horizontal origin is where the glyph
+  will start being drawn.
 
   The bounding box of a glyph is the smallest rectangle that can completely enclose the glyph.
   It is usually an array of [4] = ...
-  - xMin: The leftmost point of the glyph (lbearing)
-  - xMax: The rightmost point of the glyph (rbearing)
+  - xMin: The leftmost point of the glyph (analogous to lbearing)
+  - xMax: The rightmost point of the glyph (analogous to rbearing)
   - yMin: The bottom point of the glyph
   - yMax: The top point of the glyph
 
