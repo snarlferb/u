@@ -16,7 +16,8 @@ I actually never have issues w/ XLFD names, and its more some related
 to some descrepancy between the name that a font had, and the name you
 think you need in .Xresources. Obviously font sites on the internet
 re-produced the same font files so many times that they dont care
-to document what they are suppose to be, thats my theory atleast.
+to document what they are suppose to be... *and even w/ what i
+deem as the right name it still doesnt work, or looks bad.*
 
 If the FontForge idea doesnt work for every font (like, if the thing
 w/ errors prevents it) then, oof. But if it does, then its a neat
