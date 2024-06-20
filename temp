@@ -5,3 +5,10 @@ yet to get the chance to mess with .Xresources and figure out if theres anything
 that i can do from there. ive only tested a handful of fonts, both ttf and bdf,
 it appears to me like there's some optimized hinting instructions for fonts on
 other platforms, but once its displayed through X11/Xft they look god aweful.
+
+Heres my understanding of what happens when an X application (like xterm)
+needs to display text; It consults the system's font configuration...
+Modern X11 systems typically rely on Fontconfig (a lib for managing fonts)
+Fontconfig looks for fonts based on the user's preferences and available
+fonts on the system, and it is likely configured to use Xft by default.
+Xft, in turn, leverages the FreeType library for its core font rendering.
