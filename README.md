@@ -106,10 +106,10 @@
   
   Outline fonts are commonly used in scalable font formats. Fonts can also be stored in a font file
   as a series of vector shapes called outlines. Each outline is defined as a coordinate system (series
-  of points) in what is called the master or EM space. Points can be tagged to indicate that they are
-  actually *on the curve*, or alternatively, conic or cubic bezier control points. In the latter case,
-  they are called off-curve points; Therefore, on-curve points lie directly on the outline of the
-  glyph and are used to define the main shape of the character.
+  of points) in what is called the master or EM space (will discuss that after). Points can be tagged
+  to indicate that they are actually *on the curve*, or alternatively, conic or cubic bezier control
+  points. In the latter case, they are called off-curve points; Therefore, on-curve points lie
+  directly on the outline of the glyph and are used to define the main shape of the character.
 
   A path is a sequence of connected straight line segments and curves that define the outline of a
   letter or symbol in a font. These paths are created using mathematical functions, and Bezier curves
@@ -121,6 +121,17 @@
   Outline fonts use a single stroke to define the shape of the character. The stroke is a continuous
   path that outlines the entire character. Stroked fonts use a series of strokes to define the shape
   of the character. The strokes are individual lines that are combined to form the character.
+  
+  The EM space is typically defined by an imaginary square called the EM square, which provides a
+  framework for placing and scaling the font's glyphs. The size of this EM square is usually arbitrary
+  during the design phase and is mainly used to ensure consistent proportions and relationships
+  between different glyphs.
+
+  The "EM size" or "units per EM (UPM)" is a specific numeric value that defines the resolution of the
+  EM square in terms of font units, and each glyph is "fitted" to this space. Common values for UPM
+  include 1000 up to 2048 units, and this determines how the glyphs will be scaled and rendered on
+  different devices and at different sizes. The EM size is crucial for the font's rendering engine
+  to map the designed glyphs to actual pixels or units on a display or printed page.
   
   Pen position refers to the current point in the coordinate system where the next glyph will be drawn
   when rendering text. It's an analogy taken from traditional typesetting and calligraphy, where a pen
@@ -271,13 +282,13 @@
   Kerning is the process of adjusting the spacing/relative positions between specific pairs of
   characters to improve the overall appearance and readability of text. 
   
-  All glyphs have a width (sometimes called an advance width), this is the distance from the origin of the
-  current glyph to the right edge of the glyph, and this width is also called the right side bearing.
-  The horizontal distance between the origin and the leftmost edge of the glyph is called the left
-  side bearing (it may be negative, positive or zero), the horizontal origin is where the glyph
-  will start being drawn.
+  All glyphs have a width. This is the distance from the origin of the current glyph to the right edge
+  of the glyph, and this width is also called the right side bearing. The horizontal distance between
+  the origin and the leftmost edge of the glyph is called the left side bearing (it may be negative,
+  positive or zero), the horizontal origin is where the glyph will start being drawn
+  (will illustrate more below).
 
-  The bounding box of a glyph is the smallest rectangle that can completely enclose the glyph.
+  The bounding box of a glyph is the smallest rectangle that can completely enclose the glyph (without touching).
   It is usually an array of [4] = ...
   - xMin: The leftmost point of the glyph (analogous to lbearing)
   - xMax: The rightmost point of the glyph (analogous to rbearing)
@@ -286,7 +297,9 @@
 
   Advance metrics define the spacing between glyphs when rendering text. These are primarily concerned w/
   horizontal text layout:
-  - Advance Width: The horizontal distance from the current pen position to the next pen position.
+  - Advance Width starts at the leftmost edge of the glyph's bounding box (as a reference point) to the next
+    pen position. It ends at a calculated point that defines the total horizontal space the glyph consumes,
+    (including its visual width) and any extra spacing.
   - Left Bearing (lbearing): The distance from the current pen position to the leftmost point of the glyph (xMin)
   - Right Bearing (rbearing): The distance from the current pen position to the rightmost point of the glyph (xMax)
 
