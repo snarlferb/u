@@ -1,10 +1,7 @@
 ### More info
 
-It should be said that i am still pondering on certain propositions that are floating around in my head.
-
-There's quite a few things that i havent mentioned, both because im still experimenting and because i
-often want to keep things as simple as possible - especially on the offchance it becomes a bottomless pit.
-
-However i just want to see if anyone appreciates this introduction to text. With that said, you should prepare
-to do some magical levels of research w/ the documents i supplied. Also, in order to investigate what im doing
-wrong or missing atm within the code, i need to look at FontForge and see how it implements BDF/bitmap.
+The only font that has ever looked normal in X11 has been liberation mono, but ive
+yet to get the chance to mess with .Xresources and figure out if theres anything
+that i can do from there. ive only tested a handful of fonts, both ttf and bdf,
+it appears to me like there's some optimized hinting instructions for fonts on
+other platforms, but once its displayed through X11/Xft they look god aweful.
