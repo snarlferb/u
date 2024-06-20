@@ -1,14 +1,31 @@
 ### More info
 
-The only font that has ever looked normal in X11 has been liberation mono, but ive
-yet to get the chance to mess with .Xresources and figure out if theres anything
-that i can do from there. ive only tested a handful of fonts, both ttf and bdf,
-it appears to me like there's some optimized hinting instructions for fonts on
-other platforms, but once its displayed through X11/Xft they look god aweful.
+Okay here's something weird, i got it to work!... But i dont know if it was
+because i downloaded the right font, or because i ran it through FontForge,
+and re-generated the font. Last time i tried doing that i get one trillion
+errors that prevented me from generating it... But i thought id try it one
+more time, just to document what those errors were... Well, looks like i
+dont have to worry about that atm, but ill still verify what i did soon.
 
-Heres my understanding of what happens when an X application (like xterm)
+Of course thats not the only thing. Some fonts just literally do not
+appear the way i thought they would... Maybe im just going crazy.
+
+I feel the same way about the color of things sometimes.
+
+I actually never have issues w/ XLFD names, and its more some related
+to some descrepancy between the name that a font had, and the name you
+think you need in .Xresources. Obviously font sites on the internet
+re-produced the same font files so many times that they dont care
+to document what they are suppose to be, thats my theory atleast.
+
+If the FontForge idea doesnt work for every font (like, if the thing
+w/ errors prevents it) then, oof. But if it does, then its a neat
+way to easily get around these issues.
+
+Ps. from what i understand, when an X application (like xterm)
 needs to display text; It consults the system's font configuration...
 Modern X11 systems typically rely on Fontconfig (a lib for managing fonts)
 Fontconfig looks for fonts based on the user's preferences and available
 fonts on the system, and it is likely configured to use Xft by default.
 Xft, in turn, leverages the FreeType library for its core font rendering.
+
