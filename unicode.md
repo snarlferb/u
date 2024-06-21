@@ -112,3 +112,24 @@ not just a missing font. The visual appearance of this character can vary depend
 question mark is a common representation. It signifies that the system encountered some issue (corrupted data, incompatible encoding)
 and couldn't interpret the data stream correctly.
 
+Custom Glyph Lists
+
+This is an interesting idea i read and borrowed from the FontForge documentation, which i thought would be appropriate to put here,
+in case anyones interested... *Create a namelist.txt file (to list Unicode codepoints and glyph names)* For example:
+```
+0xEC00 octDotDhe
+0xEC01 octDotDheDbl
+0xEC02 octDotDheTrpl
+0xEC03 octDotDheQdrpl
+0xEC04 octDotLik
+0xEC05 octDotLikDbl
+0xEC06 octDotLikTrpl
+0xEC07 minirLik
+0xEC08 minirDhe
+0xEC09 minirBawah
+0xEC0A soroganDhe
+0x-001 soroganLik
+```
+For glyphs without a Unicode point, use a codepoint of -1, such as in the last line of the above example.
+Then load FontForge and go to (Encoding > Load NameList), and then use ‘Rename glyphs’, since ‘Load NameList’
+only adds the custom namelist to the set of options available in subsequent rename commands.

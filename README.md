@@ -16,9 +16,17 @@
 
   [TrueType Reference](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6.html)
 
-  You can find an overview of OpenType here (I realize that this might appear like an exorbitant
-  amount of information at first glance, however i just want it to be out there and accessible to
-  eviry 1... i like elviry... and ezmerelda, and agetha... ,.. ant jemima)
+  You can find an overview of OpenType below. Because Windows does not support font families with
+  more than the 4 basic styles (Regular, Italic, Bold, Bold Italic.) Font designers have to account
+  for this by setting it up in a way such that all our fonts can be used in all operating systems.
+
+  OpenType (a cross-platform font format) allows for this, complementing the Family and Style Name
+  values with "Preferred Family Name" and "Preferred Style Name" values that will take precedence
+  in software w/ OpenType acknowledgement.
+
+  (I realize that this might appear like an exorbitant amount of information at first glance, however i just
+  want it to be out there and accessible to eviry 1... i like elviry... ezmerelda, agetha, ant jemima...
+  ... And Hooper-humper Dink?... I'll invite him too!!...)
 
   [OpenType Overview](https://learn.microsoft.com/en-us/typography/opentype)
 
@@ -50,13 +58,21 @@
   characters that conveys information. It consists of letters, numbers, symbols, and
   whitespace that together form words, sentences, and paragraphs.
 
-  A font is a specific style and size of a typeface, which is a design set of characters.
-  A font determines how the text is visually represented. *In FreeType, a face object
-  models a given typeface in a given style.*
+  A font is a specific style and size of a typeface *(e.g. Times New Roman)*, which is a
+  design set of characters. A font determines how the text is visually represented.
+  *In FreeType, a face object models a given typeface in a given style.*
 
   Font properties include things like weight and style. Font weight refers to the thickness of the
-  strokes that make up the letters in a font. Common weights include regular, bold, light, and black.
-  Font style refers to the overall design of the font, such as whether it's italic, slanted, or upright.
+  strokes (which define outline fonts) that make up the letters in a font. Common weights include
+  regular, bold, light, and black. Font style refers to the overall design of the font, such as
+  whether it's italic, slanted, or upright. Fonts can also have decorations, they can be serifs
+  or sans-serif (the presence or absence of decorative strokes at the end), they can be script
+  (that resembles handwriting or calligraphy) or perhaps even a Dingbat/wingding type of font,
+  and we might call those 'font designs'.
+
+  Of course, it might be casually spoken that a given font looks like a particular typeface,
+  emphasizing its likeness to, e.g. 'Oh my uncle Arnold said this font is similar to ‘Arial’.'
+  -That's a perfectly justified way to give people some notion of what a certain font resembles.
 
   The character set is just the set of characters in the font. The encoding is the way that
   those characters are ordered (or sometimes, the way the first 256 are ordered).
@@ -82,6 +98,15 @@
   By multiplying the point size by the resolution and dividing it by 72, we convert the
   desired relative size (points) into the pixel density needed to achieve a similar visual
   size on that particular device/screen with its specific pixel density (dpi).
+  
+  *In traditional typography a 10pt font was one where the block of metal for each glyph was 10
+  points high. The point size of a font is the unleaded baseline to baseline distance.*
+  
+  Pen position refers to the current point in the coordinate system where the next glyph will be
+  drawn when rendering text. It's an analogy taken from traditional typesetting and calligraphy,
+  where a pen or a type piece moves across a surface to place characters. *A type piece is a
+  small physical block with an embossed character, which is irrelevant, unless you're
+  starting a printing press*
 
   So (dpi) or dots per inch, refers to the resolution of a printed image, indicating the number
   of ink dots within a single inch; (ppi) or pixels per inch refers to the resolution of a
@@ -132,11 +157,6 @@
   include 1000 up to 2048 units, and this determines how the glyphs will be scaled and rendered on
   different devices and at different sizes. The EM size is crucial for the font's rendering engine
   to map the designed glyphs to actual pixels or units on a display or printed page.
-  
-  Pen position refers to the current point in the coordinate system where the next glyph will be drawn
-  when rendering text. It's an analogy taken from traditional typesetting and calligraphy, where a pen
-  or a type piece moves across a surface to place characters. *A type piece is a small physical block
-  with an embossed character, which is irrelevant, unless you're starting a printing press*
 
   Parsing vector and bitmap fonts follows a distinct process specific to the associated format used.
   When parsing a vector font such as TrueType or OpenType, the process involves deciphering structured
