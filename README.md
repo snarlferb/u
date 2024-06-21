@@ -54,6 +54,9 @@
   possibly the most comprehensive tool, and i really enjoy using the outline/spiro, and
   bitmap view to draw/edit w/. They did a good job making it feel smooth and intuitive. 
 
+  If and when you learn how to draw w/ bezier curves, I found this page in *Technical References*
+  that has some more advanced [terms/techniques](https://fontforge.org/docs/techref/stroke.html).
+
   We'll begin by going over some generic facts. Text is the actual content or string of
   characters that conveys information. It consists of letters, numbers, symbols, and
   whitespace that together form words, sentences, and paragraphs.
@@ -68,7 +71,7 @@
   whether it's italic, slanted, or upright. Fonts can also have decorations, they can be serifs
   or sans-serif (the presence or absence of decorative strokes at the end), they can be script
   (that resembles handwriting or calligraphy) or perhaps even a Dingbat/wingding type of font,
-  and we might call those font or type designs'.
+  and we might call those font or type designs.
 
   The term "script" may also refer to a complete writing system, including its character set,
   letter forms, writing direction (left to right, right to left), and rules like capitalization,
