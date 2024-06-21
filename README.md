@@ -58,7 +58,7 @@
   characters that conveys information. It consists of letters, numbers, symbols, and
   whitespace that together form words, sentences, and paragraphs.
 
-  A font is a specific style and size of a typeface *(e.g. Times New Roman)*, which is a
+  A font is a specific style and size of a typeface="Times New Roman" for example, which is a
   design set of characters. A font determines how the text is visually represented.
   *In FreeType, a face object models a given typeface in a given style.*
 
@@ -68,7 +68,12 @@
   whether it's italic, slanted, or upright. Fonts can also have decorations, they can be serifs
   or sans-serif (the presence or absence of decorative strokes at the end), they can be script
   (that resembles handwriting or calligraphy) or perhaps even a Dingbat/wingding type of font,
-  and we might call those 'font designs'.
+  and we might call those font or type designs'.
+
+  The term "script" may also refer to a complete writing system, including its character set,
+  letter forms, writing direction (left to right, right to left), and rules like capitalization,
+  ligatures (connected letters), and diacritics (accents). Latin, Arabic, Cyrillic, and Devanagari
+  are all examples of scripts.
 
   Of course, it might be casually spoken that a given font looks like a particular typeface,
   emphasizing its likeness to, e.g. 'Oh my uncle Arnold said this font is similar to ‘Arial’.'
@@ -77,7 +82,12 @@
   The character set is just the set of characters in the font. The encoding is the way that
   those characters are ordered (or sometimes, the way the first 256 are ordered).
 
-  CID fonts (Character ID) rely on Xamount of cmap files, that which define encodings in a
+  Lookups are a broader concept in OpenType fonts, defining various character transformations.
+  GPOS and GSUB are important tables within OpenType fonts that handle specific aspects of
+  character positioning and substitution. cmap subtables are a specific type of subtable
+  used within lookups for character-to-glyph mapping.
+
+  CID fonts (Character ID) rely on `x` amount of cmap files, that which define encodings in a
   more general way. A cmap table translates character codes into corresponding glyph indices.
   This tells the font rendering engine which glyph to display for each character entered.
   A single font can have multiple cmap subtables, each supporting a different character encoding
