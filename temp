@@ -1,32 +1,21 @@
 ### More info
 
-Okay here's something weird, i got it to work!... But i dont know if it was
-because i downloaded the right font, or because i ran it through FontForge,
-and re-generated the font. Last time i tried doing that i get one trillion
-errors that prevented me from generating it... But i thought id try it one
-more time, just to document what those errors were... Well, looks like i
-dont have to worry about that atm, but ill still verify what i did soon.
+When an X application (like xterm) needs to display text; It consults the
+system's font configuration... Modern X11 systems typically rely on Fontconfig
+(a lib for managing fonts) Fontconfig looks for fonts based on the user's
+preferences and available fonts on the system, and it is likely configured
+to use Xft by default. Xft, in turn, leverages the FreeType library for
+its core font rendering.
 
-Of course thats not the only thing. Some fonts just literally do not
-appear the way i thought they would... Maybe im just going crazy.
+If you're using a proportional font - its likely that you are seeing that
+wide space between glyphs. Im currently working on an easy solution/fix.
 
-I feel the same way about the color of things sometimes.
+Here's one thing you can try: Open up FontForge, go to File -> Open
+Select the fontfile. Go to the Edit menu and choose Select All.
+Then, Go to Font -> Metrics, and "Set Width". You'd then presumably
+*Set Width To* be around half of what it was (but i havent been able
+to successfully save a file yet without being prompted w/ errors)
 
-I actually never have issues w/ XLFD names, and its more so related
-to some descrepancy between the name that a font had, and the name you
-think you need in .Xresources. Obviously font sites on the internet
-re-produced the same font files so many times that they dont care
-to document what they are suppose to be... *and even w/ what i
-deem as the right name it still doesnt work, or looks bad.*
-
-If the FontForge idea doesnt work for every font (like, if the thing
-w/ errors prevents it) then, oof. But if it does, then its a neat
-way to easily get around these issues.
-
-Ps. from what i understand, when an X application (like xterm)
-needs to display text; It consults the system's font configuration...
-Modern X11 systems typically rely on Fontconfig (a lib for managing fonts)
-Fontconfig looks for fonts based on the user's preferences and available
-fonts on the system, and it is likely configured to use Xft by default.
-Xft, in turn, leverages the FreeType library for its core font rendering.
-
+Also, some glyphs/combinations could still look off due to their shapes,
+(in which case you can try using the kerning features - to fine-tune the
+spacing between specific pairs)
