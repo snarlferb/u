@@ -79,11 +79,16 @@
   are all examples of scripts.
 
   Of course, it might be casually spoken that a given font looks like a particular typeface,
-  emphasizing its likeness to, e.g. 'Oh my uncle Arnold said this font is similar to ‘Arial’.'
+  emphasizing its likeness to, e.g. "Oh my uncle Arnold said this font is similar to ‘Arial’."
   -That's a perfectly justified way to give people some notion of what a certain font resembles.
 
   The character set is just the set of characters in the font. The encoding is the way that
   those characters are ordered (or sometimes, the way the first 256 are ordered).
+
+  Here *is* something weird that you may notice. If you do some font comparisons as i have,
+  for example "gg sans" compared to "liberation", you'll realize that the sans fonts are weird
+  because they look the same size as liberation at size 12, ergo 12pt in liberation is analogous
+  to 16pt in a little sans font, i.e., gg sans (what discord and chatgpt are using on my system)
 
   Lookups are a broader concept in OpenType fonts, defining various character transformations.
   GPOS and GSUB are important tables within OpenType fonts that handle specific aspects of
