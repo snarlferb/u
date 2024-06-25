@@ -189,10 +189,13 @@
   Bitmap fonts are already rasterized in their current form, however they must still be parsed (and decoded
   into a useable form, specifically for FreeType's rendering pipeline)
 
-  In contrast, parsing a bitmap font (like those in BDF format) involves interpreting fixed-size grid
-  representations of glyphs and corresponding metrics. The parser identifies and extracts bitmap data for
-  each character, typically stored as sequences of hexadecimal values that encode pixel patterns (the hex
-  and metadata that originated in the font file itself)
+  The pixel buffer (e.g., metrics-&gt;bitmap.buffer) acts as the primary storage for glyph bitmap data,
+  organized row by row and holds pixel information in a format that can be manipulated further.
+
+  Parsing a bitmap font (like those in BDF format) involves interpreting fixed-size grid representations of
+  glyphs and corresponding metrics. The parser identifies and extracts bitmap data for each character,
+  typically stored as sequences of hexadecimal values that encode pixel patterns (the hex and
+  metadata that originated in the font file itself)
 
   When a function reads this data from the file, it converts each hexadecimal value into its corresponding
   binary representation. This conversion is essential because the application needs to manipulate and process
