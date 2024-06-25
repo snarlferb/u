@@ -12,7 +12,7 @@ spacing issues when proportional fonts are used. Each character is forced
 into a cell of uniform width...
 
 So if you're using a proportional font, its likely that you are seeing that
-wide-even spacing between glyphs. Im currently working on an easy solution/fix.
+wide-even spacing between glyphs, and weird squished character shapes.
 
 Here's one thing you can try: Open up FontForge, go to File -> Open
 Select the fontfile. Go to the Edit menu and choose Select All.
@@ -22,16 +22,7 @@ to successfully save a file yet without being prompted w/ errors)
 
 Also, some glyphs/combinations could still look off due to their shapes,
 (in which case you can try using the kerning features - to fine-tune the
-spacing between specific pairs)
+spacing between specific pairs). W/ all that said, im working on a fix.
 
-Now im looking at alternatives to xterm of course, as i will implement it
-myself...im looking at terminals based on "st" simple terminal atm....
-which there are three different forks in my search engine; and doing a
-search in google shows about 20 different forks lol, sooo....
-
-*We might need to communicate to avoid this kind of thing.*
-
-I'll be sure to message one of the more popular ones to see what their
-thoughts are on this, and if they'd be interested in having proportional
-imeplemented.
-
+Note: I dont think we need to be limited to monospace fonts personally,
+theres too many changes happening now, and we have to get linux caught up.
