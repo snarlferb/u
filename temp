@@ -7,8 +7,12 @@ preferences and available fonts on the system, and it is likely configured
 to use Xft by default. Xft, in turn, leverages the FreeType library for
 its core font rendering.
 
-If you're using a proportional font - its likely that you are seeing that
-wide space between glyphs. Im currently working on an easy solution/fix.
+xterm uses fixed-width cells for each character, which can exacerbate the
+spacing issues when proportional fonts are used. Each character is forced
+into a cell of uniform width...
+
+So if you're using a proportional font, its likely that you are seeing that
+wide-even spacing between glyphs. Im currently working on an easy solution/fix.
 
 Here's one thing you can try: Open up FontForge, go to File -> Open
 Select the fontfile. Go to the Edit menu and choose Select All.
