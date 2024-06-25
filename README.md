@@ -209,6 +209,10 @@
   information) are used for rendering or other operations. Note, that bitmap font depth and display
   depth are two totally different things.
 
+  After conversion, the binary pixel data is typically stored in a pixel buffer. The pixel buffer
+  allocates memory to hold the bitmap data for each glyph. Depending on the bpp (bits per pixel)
+  of the font, the pixel buffer organizes and manages the pixel data efficiently.
+
   RGB Packing (separate step) is a technique that uses allocated bits, and thus assumes a specific bpp
   allocation (likely 24-bit for RGB) and packs the individual red, green, and blue values (typically within
   the range of 0 to 255) into a single integer using bit shifting, typically. It ensures each color component
