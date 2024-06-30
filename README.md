@@ -30,6 +30,11 @@
 
   [OpenType Overview](https://learn.microsoft.com/en-us/typography/opentype)
 
+  I have a separate markdown file for further explanation on the Unicode Standard, how it works,
+  and everything about it.
+
+  [Unicode Information](unicode.md)
+
   The following document presents the core conventions used within the FreeType library
   to manage font and glyph data.
 
@@ -38,7 +43,7 @@
   And the following lists FAQs, API references, a step-by-step introduction into the
   FreeType library as well as an overview of some of its internals, and more.
 
-  [Documentation](https://freetype.org/freetype2/docs/documentation.html)
+  [FT Documentation](https://freetype.org/freetype2/docs/documentation.html)
 
   *Text proc, tutorial and API reference are useful for creating an application.*
 
@@ -100,8 +105,7 @@
   This tells the font rendering engine which glyph to display for each character entered.
   A single font can have multiple cmap subtables, each supporting a different character encoding
   scheme (e.g., Unicode, Windows-1252). This allows a single font to work with various character
-  sets used by different operating systems or applications.
-  (see [./unicode.md](unicode.md) to learn more about encodings)
+  sets used by different operating systems or applications. (see [./unicode](unicode.md) to learn more about encodings)
 
   Monospace fonts possess characters that occupy the same amount of horizontal space, regardless
   of its shape. Proportional font characters occupy varying amounts of horizontal space based on

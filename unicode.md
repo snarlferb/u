@@ -1,4 +1,12 @@
 ### Unicode
+
+  Unicode Character Database (UCD) is a collection of files that provide data and algorithms for handling
+  Unicode characters in software. It includes character properties, such as widths, classifications, and
+  other data needed for correct text processing.
+
+  [Unicode Character Database](https://www.unicode.org/ucd)
+
+### Preface
   
   Unicode is a universal character encoding standard that assigns a unique code point to almost every
   character used in human languages.
